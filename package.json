@@ -1,0 +1,202 @@
+{
+	"name": "vscode-callgraph",
+	"publisher": "xylab",
+	"displayName": "CallGraph",
+	"description": "CallGraph",
+	"icon": "icon.png",
+	"version": "1.0.0",
+	"repository": "",
+	"engines": {
+		"vscode": "^1.68.1"
+	},
+	"categories": [
+		"Other",
+		"Visualization"
+	],
+	"keywords": [
+		"dgml",
+		"graph",
+		"visualization"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "vscode-dgmlviewer.dgmlViewer",
+				"title": "DGMLViewer: Render the dgml graph"
+			},
+			{
+				"command": "vscode-callgraph.getProjectExternalCallees",
+				"title": "CallGraph: Get external Callees"
+			},
+			{
+				"command": "vscode-callgraph.getCallGraphCalllees",
+				"title": "CallGraph: Get Callees"
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "vscode-callgraph.getCallGraphCalllees",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "vscode-callgraph.getCallGraphCalllees",
+					"group": "inline"
+				}
+			]
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "code-analyze",
+					"title": "代码分析",
+					"icon": "media/dep.svg"
+				}
+			]
+		},
+		"views": {
+			"code-analyze": [
+				{
+					"id": "project-external-callees",
+					"name": "项目调用外部函数"
+				},
+				{
+					"id": "method-callees",
+					"name": "函数向下调用链"
+				},
+				{
+					"id": "method-external-callers",
+					"name": "函数向上调用链"
+				}
+			]
+		},
+		"configuration": {
+			"title": "CallGraph",
+			"properties": {
+				"dgmlViewer.defaultNodeBackgroundColor": {
+					"type": "string",
+					"default": "#D2E5FF",
+					"description": "The color of the nodes of the directed graph. The string should be in rgb format."
+				},
+				"dgmlViewer.edgeArrowToType": {
+					"type": "string",
+					"default": "triangle",
+					"enum": [
+						"chevron",
+						"circle-triangle",
+						"circle",
+						"diamond",
+						"square",
+						"tee",
+						"triangle-backcurve",
+						"triangle-cross",
+						"triangle-tee",
+						"triangle",
+						"vee",
+						"none"
+					],
+					"description": "The default ending of the edges."
+				},
+				"dgmlViewer.nodeShape": {
+					"type": "string",
+					"default": "round-rectangle",
+					"enum": [
+						"barrel",
+						"bottom-round-rectangle",
+						"concave-hexagon",
+						"cut-rectangle",
+						"diamond",
+						"ellipse",
+						"heptagon",
+						"hexagon",
+						"octagon",
+						"pentagon",
+						"rectangle",
+						"rhomboid",
+						"round-diamond",
+						"round-heptagon",
+						"round-hexagon",
+						"round-octagon",
+						"round-pentagon",
+						"round-rectangle",
+						"round-tag",
+						"round-triangle",
+						"star",
+						"tag",
+						"triangle",
+						"vee"
+					],
+					"description": "The shape of the nodes in the directed graph. Notice that 'ellipse','circle','database','box' and 'text' have the label inside the shape, the rest have the label outside the shape."
+				},
+				"dgmlViewer.graphSelectionGuidelineColor": {
+					"type": "string",
+					"default": "blue",
+					"description": "The color of the guidelines used when selecting part of a directed graph. The string should be in rgba format or standard css color names."
+				},
+				"dgmlViewer.graphSelectionGuidelineWidth": {
+					"type": "number",
+					"default": "1",
+					"description": "The width of the guide lines shown when selecting part of a directed graph"
+				},
+				"dgmlViewer.graphSelectionColor": {
+					"type": "string",
+					"default": "red",
+					"description": "The color of the selection rectangle used when selecting part of a directed graph. The string should be in rgba format or standard css color names."
+				},
+				"dgmlViewer.graphSelectionWidth": {
+					"type": "number",
+					"default": "2",
+					"description": "The width of the selection rectangle shown when selecting part of a directed graph"
+				},
+				"dgmlViewer.saveAsFilename": {
+					"type": "string",
+					"default": "DirectedGraph",
+					"description": "The default name used when saving the directed graph as a Png, Jpg, Svg or Json file."
+				},
+				"dgmlViewer.showPopupsOverNodesAndLinks": {
+					"type": "boolean",
+					"default": true,
+					"description": "When the setting is set to true a popup with various information from node or edge will be shown when the mouse pointer hovers over nodes and edges."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
+		"webpack": "webpack --mode development",
+		"webpack-dev": "webpack --mode development --watch",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -p ./ && tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.2.0",
+		"@types/node": "^18.0.3",
+		"@types/vscode": "^1.68.1",
+		"@typescript-eslint/eslint-plugin": "^5.30.5",
+		"@typescript-eslint/parser": "^5.30.5",
+		"eslint": "^8.19.0",
+		"ts-loader": "^9.3.1",
+		"typescript": "^4.7.4",
+		"webpack": "^5.73.0",
+		"webpack-cli": "^4.10.0"
+	},
+	"dependencies": {
+		"js-base64": "^3.7.2",
+		"node-fetch": "^3.2.10",
+		"ts-dgml": "^3.0.2",
+		"xml-parser": "^1.2.1"
+	},
+	"__metadata": {
+		"isApplicationScoped": false,
+		"installedTimestamp": 1659754033629
+	}
+}
