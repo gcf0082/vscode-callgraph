@@ -1,29 +1,24 @@
 import * as vscode from 'vscode';
+import {CallGraphViewer} from './callGraphViewer'
 
-import { DgmlViewer, FileInfo } from '@commands';
 import { CallGraphCalleeProvider } from './callgraphCalleesProvider';
 
 export function activate(context: vscode.ExtensionContext) {
-  const cmdPrefix = 'vscode-dgmlviewer';
-	let dgmlViewerDisposable = vscode.commands.registerCommand(`${cmdPrefix}.${DgmlViewer.commandName}`, () => {
-    const dgmlViewerPanel = vscode.window.createWebviewPanel(
-      'dgmlViewer_DgmlViewer',
-      'Dgml Viewer',
+	let callgraphViewerDisposable = vscode.commands.registerCommand(`vscode-callgraph.getCallGraphCalllees`, () => {
+    const callgrapViewerPanel = vscode.window.createWebviewPanel(
+      'Call Graph',
+      'Call Graph Viewer',
       vscode.ViewColumn.One,
       {
         enableScripts: true
       }
     );
-    const command = new DgmlViewer(context);
-    command.execute(dgmlViewerPanel.webview);
+    const command = new CallGraphViewer(context);
+    command.execute(callgrapViewerPanel.webview);
+    context.subscriptions.push(callgraphViewerDisposable);
 	});
-  context.subscriptions.push(dgmlViewerDisposable);
+
   
-  let fileInfoDisposable = vscode.commands.registerCommand(`${cmdPrefix}.${FileInfo.commandName}`, () => {
-    const command = new FileInfo();
-    command.execute();
-  });
-  context.subscriptions.push(fileInfoDisposable);
 
   vscode.window.registerTreeDataProvider('method-callees', new CallGraphCalleeProvider());
 }

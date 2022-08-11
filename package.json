@@ -23,11 +23,7 @@
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "vscode-dgmlviewer.dgmlViewer",
-				"title": "DGMLViewer: Render the dgml graph"
-			},
+		"commands": [			
 			{
 				"command": "vscode-callgraph.getProjectExternalCallees",
 				"title": "CallGraph: Get external Callees"
