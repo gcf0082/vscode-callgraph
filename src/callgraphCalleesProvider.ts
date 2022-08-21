@@ -9,10 +9,12 @@ export class CallGraphCalleeProvider implements vscode.TreeDataProvider<Callee> 
     
         constructor() {
             this.data = [];
-            const disposable = vscode.commands.registerCommand('vscode-callgraph.getCallGraphCalllees', async () => {
+            const disposable = vscode.commands.registerCommand('vscode-callgraph.getProjectExternalCallees', async () => {
+                const respone = await fetch(`http://127.0.0.1:8080/project/current`, { method: 'GET' });
+                const project: any = await respone.json();                
                 const caller: string | undefined = await vscode.window.showInputBox({ prompt: '请输入函数名'});
                 console.log(caller);
-                fetch(`http://127.0.0.1:8080/caller_graph?project_name=proj_log4j&method=${caller}`,{method: 'GET'}
+                fetch(`http://127.0.0.1:8080/caller_graph?project_name=${project.name}&method=${caller}`,{method: 'GET'}
                 ).then(res => res.json()).then(
                    json => {
                        vscode.window.showInformationMessage(JSON.stringify(json));
@@ -93,7 +95,7 @@ export class CallGraphCalleeProvider implements vscode.TreeDataProvider<Callee> 
                 ]
             }`
     
-            this.transferCallGraph2TreeJson(JSON.parse(jsonData), true);
+            this.transferCallGraph2TreeJson(JSON.parse(data), true);
             this._onDidChangeTreeData.fire(null);
         }
     }

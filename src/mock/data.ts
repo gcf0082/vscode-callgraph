@@ -4730,3 +4730,675 @@ export var data2 = `{
       }
   ]
 }`;
+
+export var data4 = `{
+    "nodes": [
+      {
+        "data": {
+          "id": "OCyR2dMQDTwHrKpjJJLxQA#036",
+          "fullMethod": "test.call_graph.method_call.TestMCCallee:test_func_1()",
+          "simpleMethod": "test_func_1"
+        }
+      },
+      {
+        "data": {
+          "id": "JWs-sMySpZCOp8KfhSlP8w#036",
+          "fullMethod": "test.call_graph.method_call.TestMCCallee:test_func_4()",
+          "simpleMethod": "test_func_4"
+        }
+      },
+      {
+        "data": {
+          "id": "q24xXI2ez5jPZ8xO1Eq6sQ#036",
+          "fullMethod": "test.call_graph.method_call.TestMCCallee:test_func_3()",
+          "simpleMethod": "test_func_3"
+        }
+      },
+      {
+        "data": {
+          "id": "f5cAcG7F28ffoe7LKY9xNQ#036",
+          "fullMethod": "test.call_graph.method_call.TestMCCallee:test_func_5()",
+          "simpleMethod": "test_func_5"
+        }
+      },
+      {
+        "data": {
+          "id": "f5cAcG7F28ffoe7LKY9xNQ#0366",
+          "fullMethod": "test.call_graph.method_call.TestMCCallee:test_func_6()",
+          "simpleMethod": "test_func_6"
+        }
+      },
+      {
+        "data": {
+          "id": "f5cAcG7F28ffoe7LKY9xNQ#0367",
+          "fullMethod": "test.call_graph.method_call.TestMCCallee:test_func_7()",
+          "simpleMethod": "test_func_7"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "id": "OCyR2dMQDTwHrKpjJJLxQA#036_JWs-sMySpZCOp8KfhSlP8w#036",
+          "source": "OCyR2dMQDTwHrKpjJJLxQA#036",
+          "target": "JWs-sMySpZCOp8KfhSlP8w#036"
+        }
+      },
+      {
+        "data": {
+          "id": "JWs-sMySpZCOp8KfhSlP8w#036_q24xXI2ez5jPZ8xO1Eq6sQ#036",
+          "source": "JWs-sMySpZCOp8KfhSlP8w#036",
+          "target": "q24xXI2ez5jPZ8xO1Eq6sQ#036"
+        }
+      },
+      {
+        "data": {
+          "id": "q24xXI2ez5jPZ8xO1Eq6sQ#036_f5cAcG7F28ffoe7LKY9xNQ#036",
+          "source": "q24xXI2ez5jPZ8xO1Eq6sQ#036",
+          "target": "f5cAcG7F28ffoe7LKY9xNQ#036"
+        }
+      },
+      {
+        "data": {
+          "id": "f5cAcG7F28ffoe7LKY9xNQ#0366_JWs-sMySpZCOp8KfhSlP8w#036",
+          "source": "f5cAcG7F28ffoe7LKY9xNQ#0366",
+          "target": "JWs-sMySpZCOp8KfhSlP8w#036"
+        }
+      },
+      {
+        "data": {
+          "id": "f5cAcG7F28ffoe7LKY9xNQ#0366_JWs-sMySpZCOp8KfhSlP8w#036",
+          "source": "f5cAcG7F28ffoe7LKY9xNQ#0366",
+          "target": "JWs-sMySpZCOp8KfhSlP8w#036"
+        }
+      },
+      {
+        "data": {
+          "id": "f5cAcG7F28ffoe7LKY9xNQ#0366_f5cAcG7F28ffoe7LKY9xNQ#0367",
+          "source": "f5cAcG7F28ffoe7LKY9xNQ#0366",
+          "target": "f5cAcG7F28ffoe7LKY9xNQ#0367"
+        }
+      },
+      {
+        "data": {
+          "id": "q24xXI2ez5jPZ8xO1Eq6sQ#036_f5cAcG7F28ffoe7LKY9xNQ#0367",
+          "source": "q24xXI2ez5jPZ8xO1Eq6sQ#036",
+          "target": "f5cAcG7F28ffoe7LKY9xNQ#0367"
+        }
+      }
+    ]
+  }`;
+
+  export var data_external_callees = `
+  [
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:test1()",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 15,
+        "calleeMethod": "java.awt.Button:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:test1()",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 16,
+        "calleeMethod": "java.awt.Button:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:test2()",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 20,
+        "calleeMethod": "java.awt.Button:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:test3()",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 29,
+        "calleeMethod": "java.awt.Button:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:test4()",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 38,
+        "calleeMethod": "java.awt.Button:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:test1()",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 15,
+        "calleeMethod": "java.awt.Button:addActionListener(java.awt.event.ActionListener)"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:test1()",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 16,
+        "calleeMethod": "java.awt.Button:addActionListener(java.awt.event.ActionListener)"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:test2()",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 20,
+        "calleeMethod": "java.awt.Button:addActionListener(java.awt.event.ActionListener)"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:test3()",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 29,
+        "calleeMethod": "java.awt.Button:addActionListener(java.awt.event.ActionListener)"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:test4()",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 38,
+        "calleeMethod": "java.awt.Button:addActionListener(java.awt.event.ActionListener)"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:test4()",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 38,
+        "calleeMethod": "java.awt.event.ActionListener:actionPerformed()"
+    },
+    {
+        "callerMehtod": "test.call_graph.method_call.TestMCCaller:argsWithArray(java.lang.String[])",
+        "callerClass": "test.call_graph.method_call.TestMCCaller",
+        "linenum": 176,
+        "calleeMethod": "java.io.PrintStream:println(boolean)"
+    },
+    {
+        "callerMehtod": "test.call_graph.method_call.TestMCCallee:test2(java.lang.String,java.lang.String)",
+        "callerClass": "test.call_graph.method_call.TestMCCallee",
+        "linenum": 21,
+        "calleeMethod": "java.io.PrintStream:println(int)"
+    },
+    {
+        "callerMehtod": "test.call_graph.stream.TestStream1:test1()",
+        "callerClass": "test.call_graph.stream.TestStream1",
+        "linenum": 24,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.Object)"
+    },
+    {
+        "callerMehtod": "test.call_graph.stream.TestStream2:test2()",
+        "callerClass": "test.call_graph.stream.TestStream2",
+        "linenum": 18,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.Object)"
+    },
+    {
+        "callerMehtod": "test.call_graph.stream.TestStream2:test2()",
+        "callerClass": "test.call_graph.stream.TestStream2",
+        "linenum": 21,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.Object)"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener$1:actionPerformed(java.awt.event.ActionEvent)",
+        "callerClass": "test.call_graph.action_listener.TestActionListener$1",
+        "linenum": 23,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.extend.A1_1:<init>()",
+        "callerClass": "test.call_graph.extend.A1_1",
+        "linenum": 12,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.extend.A1_1:fa1_1()",
+        "callerClass": "test.call_graph.extend.A1_1",
+        "linenum": 21,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.extend.A2_1:fa2_1()",
+        "callerClass": "test.call_graph.extend.A2_1",
+        "linenum": 17,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.extend.A2_2:f2()",
+        "callerClass": "test.call_graph.extend.A2_2",
+        "linenum": 14,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.AbstractClass1:test()",
+        "callerClass": "test.call_graph.implement.AbstractClass1",
+        "linenum": 12,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.AbstractClassL2:f1()",
+        "callerClass": "test.call_graph.implement.AbstractClassL2",
+        "linenum": 12,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClass1:f1()",
+        "callerClass": "test.call_graph.implement.ImplClass1",
+        "linenum": 12,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClassL2_1:f1()",
+        "callerClass": "test.call_graph.implement.ImplClassL2_1",
+        "linenum": 12,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.method_call.TestMCCallee:run(int,java.lang.String,java.math.BigDecimal)",
+        "callerClass": "test.call_graph.method_call.TestMCCallee",
+        "linenum": 31,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.RunnableImpl1:run()",
+        "callerClass": "test.call_graph.runnable_impl.RunnableImpl1",
+        "linenum": 13,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:lambda$f4$1()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 37,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:lambda$f4$0()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 30,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.same_name.a.SameNameClass1:test()",
+        "callerClass": "test.call_graph.same_name.a.SameNameClass1",
+        "linenum": 10,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.same_name.b.SameNameClass1:test()",
+        "callerClass": "test.call_graph.same_name.b.SameNameClass1",
+        "linenum": 10,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.variable_argument.TestVAVariableLength1:log(java.lang.String,int,java.lang.String[])",
+        "callerClass": "test.call_graph.variable_argument.TestVAVariableLength1",
+        "linenum": 23,
+        "calleeMethod": "java.io.PrintStream:println(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.thread.ThreadChild:run()",
+        "callerClass": "test.call_graph.thread.ThreadChild",
+        "linenum": 13,
+        "calleeMethod": "java.io.PrintStream:println(long)"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClass2:f2()",
+        "callerClass": "test.call_graph.implement.ImplClass2",
+        "linenum": 22,
+        "calleeMethod": "java.lang.InterruptedException:printStackTrace()"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClassL2_2:f2()",
+        "callerClass": "test.call_graph.implement.ImplClassL2_2",
+        "linenum": 22,
+        "calleeMethod": "java.lang.InterruptedException:printStackTrace()"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:f4()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 26,
+        "calleeMethod": "java.lang.Runnable:run()"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:f4()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 35,
+        "calleeMethod": "java.lang.Runnable:run()"
+    },
+    {
+        "callerMehtod": "test.call_graph.argument.TestArgument2:test()",
+        "callerClass": "test.call_graph.argument.TestArgument2",
+        "linenum": 11,
+        "calleeMethod": "java.lang.System:currentTimeMillis()"
+    },
+    {
+        "callerMehtod": "test.call_graph.future.CallableImpl:call()",
+        "callerClass": "test.call_graph.future.CallableImpl",
+        "linenum": 15,
+        "calleeMethod": "java.lang.System:currentTimeMillis()"
+    },
+    {
+        "callerMehtod": "test.call_graph.future.FutureImpl:get()",
+        "callerClass": "test.call_graph.future.FutureImpl",
+        "linenum": 32,
+        "calleeMethod": "java.lang.System:currentTimeMillis()"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ChildClass2:f2()",
+        "callerClass": "test.call_graph.implement.ChildClass2",
+        "linenum": 17,
+        "calleeMethod": "java.lang.System:currentTimeMillis()"
+    },
+    {
+        "callerMehtod": "test.call_graph.manual_add_callgraph.fixed.TestFixedManualAddCallGraph$1:execute()",
+        "callerClass": "test.call_graph.manual_add_callgraph.fixed.TestFixedManualAddCallGraph$1",
+        "linenum": 17,
+        "calleeMethod": "java.lang.System:currentTimeMillis()"
+    },
+    {
+        "callerMehtod": "test.call_graph.method_call.TestMCCaller:test1g()",
+        "callerClass": "test.call_graph.method_call.TestMCCaller",
+        "linenum": 50,
+        "calleeMethod": "java.lang.System:currentTimeMillis()"
+    },
+    {
+        "callerMehtod": "test.call_graph.method_call.TestMCCaller:test2c()",
+        "callerClass": "test.call_graph.method_call.TestMCCaller",
+        "linenum": 78,
+        "calleeMethod": "java.lang.System:currentTimeMillis()"
+    },
+    {
+        "callerMehtod": "test.call_graph.method_call.TestMCCaller:test2c()",
+        "callerClass": "test.call_graph.method_call.TestMCCaller",
+        "linenum": 85,
+        "calleeMethod": "java.lang.System:currentTimeMillis()"
+    },
+    {
+        "callerMehtod": "test.call_graph.thread.ThreadChild:run()",
+        "callerClass": "test.call_graph.thread.ThreadChild",
+        "linenum": 13,
+        "calleeMethod": "java.lang.System:currentTimeMillis()"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ChildClass1:f2()",
+        "callerClass": "test.call_graph.implement.ChildClass1",
+        "linenum": 17,
+        "calleeMethod": "java.lang.System:exit(int)"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.ActionListener1:actionPerformed(java.awt.event.ActionEvent)",
+        "callerClass": "test.call_graph.action_listener.ActionListener1",
+        "linenum": 14,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.future.FutureImpl:get(long,java.util.concurrent.TimeUnit)",
+        "callerClass": "test.call_graph.future.FutureImpl",
+        "linenum": 37,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.future.TestFuture$1:call()",
+        "callerClass": "test.call_graph.future.TestFuture$1",
+        "linenum": 29,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.future.TestFuture$2:run()",
+        "callerClass": "test.call_graph.future.TestFuture$2",
+        "linenum": 50,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.future.TestFuture$3:run()",
+        "callerClass": "test.call_graph.future.TestFuture$3",
+        "linenum": 60,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.future.TestFuture:lambda$test4$0()",
+        "callerClass": "test.call_graph.future.TestFuture",
+        "linenum": 40,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ChildClass1:f1()",
+        "callerClass": "test.call_graph.implement.ChildClass1",
+        "linenum": 12,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClass1:f2()",
+        "callerClass": "test.call_graph.implement.ImplClass1",
+        "linenum": 17,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClassL2_1:f2()",
+        "callerClass": "test.call_graph.implement.ImplClassL2_1",
+        "linenum": 17,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.lambda.TestLambda:lambda$test$0(java.lang.String)",
+        "callerClass": "test.call_graph.lambda.TestLambda",
+        "linenum": 14,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.manual_add_callgraph.fixed.FixedService1b:execute()",
+        "callerClass": "test.call_graph.manual_add_callgraph.fixed.FixedService1b",
+        "linenum": 11,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.manual_add_callgraph.unfixed.UnfixedService1a:execute(java.lang.Long,java.util.LinkedList)",
+        "callerClass": "test.call_graph.manual_add_callgraph.unfixed.UnfixedService1a",
+        "linenum": 13,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:lambda$f4$0()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 28,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.thread.TestThread$1:run()",
+        "callerClass": "test.call_graph.thread.TestThread$1",
+        "linenum": 29,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.variable_argument.TestVAArg1:test()",
+        "callerClass": "test.call_graph.variable_argument.TestVAArg1",
+        "linenum": 11,
+        "calleeMethod": "java.lang.System:getProperty(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ChildClass2:f1()",
+        "callerClass": "test.call_graph.implement.ChildClass2",
+        "linenum": 12,
+        "calleeMethod": "java.lang.System:getenv(java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.manual_add_callgraph.fixed.TestFixedManualAddCallGraph$3:execute()",
+        "callerClass": "test.call_graph.manual_add_callgraph.fixed.TestFixedManualAddCallGraph$3",
+        "linenum": 36,
+        "calleeMethod": "java.lang.System:setErr(java.io.PrintStream)"
+    },
+    {
+        "callerMehtod": "test.call_graph.manual_add_callgraph.unfixed.TestUnfixedManualAddCallGraph$2:execute(java.math.BigDecimal,java.util.Set)",
+        "callerClass": "test.call_graph.manual_add_callgraph.unfixed.TestUnfixedManualAddCallGraph$2",
+        "linenum": 37,
+        "calleeMethod": "java.lang.System:setIn(java.io.InputStream)"
+    },
+    {
+        "callerMehtod": "test.call_graph.manual_add_callgraph.unfixed.TestUnfixedManualAddCallGraph$3:execute(java.lang.String,java.util.List)",
+        "callerClass": "test.call_graph.manual_add_callgraph.unfixed.TestUnfixedManualAddCallGraph$3",
+        "linenum": 47,
+        "calleeMethod": "java.lang.System:setOut(java.io.PrintStream)"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener$2:actionPerformed(java.awt.event.ActionEvent)",
+        "callerClass": "test.call_graph.action_listener.TestActionListener$2",
+        "linenum": 32,
+        "calleeMethod": "java.lang.System:setProperty(java.lang.String,java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.action_listener.TestActionListener:lambda$test4$0(java.awt.event.ActionEvent)",
+        "callerClass": "test.call_graph.action_listener.TestActionListener",
+        "linenum": 38,
+        "calleeMethod": "java.lang.System:setProperty(java.lang.String,java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.manual_add_callgraph.fixed.TestFixedManualAddCallGraph$2:execute()",
+        "callerClass": "test.call_graph.manual_add_callgraph.fixed.TestFixedManualAddCallGraph$2",
+        "linenum": 26,
+        "calleeMethod": "java.lang.System:setProperty(java.lang.String,java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.manual_add_callgraph.unfixed.TestUnfixedManualAddCallGraph$1:execute(java.lang.Integer,java.util.ArrayList)",
+        "callerClass": "test.call_graph.manual_add_callgraph.unfixed.TestUnfixedManualAddCallGraph$1",
+        "linenum": 27,
+        "calleeMethod": "java.lang.System:setProperty(java.lang.String,java.lang.String)"
+    },
+    {
+        "callerMehtod": "test.call_graph.manual_add_callgraph.fixed.TestFixedManualAddCallGraph$4:execute()",
+        "callerClass": "test.call_graph.manual_add_callgraph.fixed.TestFixedManualAddCallGraph$4",
+        "linenum": 46,
+        "calleeMethod": "java.lang.System:setSecurityManager(java.lang.SecurityManager)"
+    },
+    {
+        "callerMehtod": "test.call_graph.thread.TestThread$1:<init>(test.call_graph.thread.TestThread)",
+        "callerClass": "test.call_graph.thread.TestThread$1",
+        "linenum": 26,
+        "calleeMethod": "java.lang.Thread:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.thread.TestThread$ThreadInner:<init>(test.call_graph.thread.TestThread)",
+        "callerClass": "test.call_graph.thread.TestThread$ThreadInner",
+        "linenum": 34,
+        "calleeMethod": "java.lang.Thread:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.thread.ThreadChild:<init>()",
+        "callerClass": "test.call_graph.thread.ThreadChild",
+        "linenum": 9,
+        "calleeMethod": "java.lang.Thread:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:f2()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 18,
+        "calleeMethod": "java.lang.Thread:<init>(java.lang.Runnable)"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:f3()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 22,
+        "calleeMethod": "java.lang.Thread:<init>(java.lang.Runnable)"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:f4()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 26,
+        "calleeMethod": "java.lang.Thread:<init>(java.lang.Runnable)"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:f4()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 35,
+        "calleeMethod": "java.lang.Thread:<init>(java.lang.Runnable)"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:f3()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 22,
+        "calleeMethod": "java.lang.Thread:run()"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClass2:f2()",
+        "callerClass": "test.call_graph.implement.ImplClass2",
+        "linenum": 20,
+        "calleeMethod": "java.lang.Thread:sleep(long)"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClassL2_2:f2()",
+        "callerClass": "test.call_graph.implement.ImplClassL2_2",
+        "linenum": 20,
+        "calleeMethod": "java.lang.Thread:sleep(long)"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:f2()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 18,
+        "calleeMethod": "java.lang.Thread:start()"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:f4()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 33,
+        "calleeMethod": "java.lang.Thread:start()"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:f4()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 38,
+        "calleeMethod": "java.lang.Thread:start()"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClass2:f1()",
+        "callerClass": "test.call_graph.implement.ImplClass2",
+        "linenum": 14,
+        "calleeMethod": "java.security.SecureRandom:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClassL2_2:f1()",
+        "callerClass": "test.call_graph.implement.ImplClassL2_2",
+        "linenum": 14,
+        "calleeMethod": "java.security.SecureRandom:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:lambda$f4$0()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 32,
+        "calleeMethod": "java.security.SecureRandom:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.thread.TestThread$ThreadInner:run()",
+        "callerClass": "test.call_graph.thread.TestThread$ThreadInner",
+        "linenum": 38,
+        "calleeMethod": "java.security.SecureRandom:<init>()"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClass2:f1()",
+        "callerClass": "test.call_graph.implement.ImplClass2",
+        "linenum": 14,
+        "calleeMethod": "java.security.SecureRandom:nextInt()"
+    },
+    {
+        "callerMehtod": "test.call_graph.implement.ImplClassL2_2:f1()",
+        "callerClass": "test.call_graph.implement.ImplClassL2_2",
+        "linenum": 14,
+        "calleeMethod": "java.security.SecureRandom:nextInt()"
+    },
+    {
+        "callerMehtod": "test.call_graph.runnable_impl.TestRunnable:lambda$f4$0()",
+        "callerClass": "test.call_graph.runnable_impl.TestRunnable",
+        "linenum": 32,
+        "calleeMethod": "java.security.SecureRandom:nextInt()"
+    },
+    {
+        "callerMehtod": "test.call_graph.thread.TestThread$ThreadInner:run()",
+        "callerClass": "test.call_graph.thread.TestThread$ThreadInner",
+        "linenum": 38,
+        "calleeMethod": "java.security.SecureRandom:nextInt()"
+    },
+    {
+        "callerMehtod": "test.call_graph.future.TestFuture:test4()",
+        "callerClass": "test.call_graph.future.TestFuture",
+        "linenum": 38,
+        "calleeMethod": "java.util.concurrent.Callable:call()"
+    },
+    {
+        "callerMehtod": "test.call_graph.future.FutureTaskChild:<init>(java.lang.Runnable,java.lang.Object)",
+        "callerClass": "test.call_graph.future.FutureTaskChild",
+        "linenum": 19,
+        "calleeMethod": "java.util.concurrent.FutureTask:<init>(java.lang.Runnable,java.lang.Object)"
+    },
+    {
+        "callerMehtod": "test.call_graph.future.FutureTaskChild:<init>(java.util.concurrent.Callable)",
+        "callerClass": "test.call_graph.future.FutureTaskChild",
+        "linenum": 15,
+        "calleeMethod": "java.util.concurrent.FutureTask:<init>(java.util.concurrent.Callable)"
+    }
+]`;

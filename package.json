@@ -7,16 +7,13 @@
 	"version": "1.0.0",
 	"repository": "",
 	"engines": {
-		"vscode": "^1.68.1"
+		"vscode": "^1.51.0"
 	},
 	"categories": [
-		"Other",
-		"Visualization"
+		"Other"
 	],
 	"keywords": [
-		"dgml",
-		"graph",
-		"visualization"
+		"callgraph"
 	],
 	"activationEvents": [
 		"*"
@@ -26,11 +23,23 @@
 		"commands": [			
 			{
 				"command": "vscode-callgraph.getProjectExternalCallees",
-				"title": "CallGraph: Get external Callees"
+				"title": "CallGraph: Get external Callees 查看调用的所有外部函数"
 			},
 			{
 				"command": "vscode-callgraph.getCallGraphCalllees",
-				"title": "CallGraph: Get Callees"
+				"title": "CallGraph: Get Callees 查看向下调用链"
+			},
+			{
+				"command": "vscode-callgraph.getCallGraphCalllers",
+				"title": "CallGraph: Get Callers 查看向上调用链"
+			},
+			{
+				"command": "vscode-callgraph.startServer",
+				"title": "CallGraph: start searver"
+			},
+			{
+				"command": "vscode-callgraph.openfile",
+				"title": "CallGraph: open file"
 			}
 		],
 		"menus": {

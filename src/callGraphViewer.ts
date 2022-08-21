@@ -12,9 +12,9 @@ export class CallGraphViewer {
         this.extensionContext = context;
       }
 
-      private generateAndWriteJavascriptFile(callbackFunction: () => void) {
+      private generateAndWriteJavascriptFile(nodesJson: string, edgesJson: string, callbackFunction: () => void) {
    
-          const jsContent = this.generateJavascriptContent('nodesJson', 'edgesJson');
+          const jsContent = this.generateJavascriptContent(nodesJson, edgesJson);
           const outputJsFilename = CallGraphViewer._name + '.js';
           try {
             this.fsUtils.writeFile(this.extensionContext?.asAbsolutePath(path.join('.', outputJsFilename)), jsContent, callbackFunction);
@@ -26,8 +26,8 @@ export class CallGraphViewer {
       private generateJavascriptContent(nodesJson: string, edgesJson: string): string {
         const templateJsFilename = CallGraphViewer._name + '_Template.js';
         let template = fs.readFileSync(this.extensionContext?.asAbsolutePath(path.join('templates', templateJsFilename)), 'utf8');
-        let jsContent = template.replace('var nodeElements = [];', `var nodeElements = [{data: { id: 'a' } }];`);
-        jsContent = jsContent.replace('var edgeElements = [];', `var edgeElements = [];`);
+        let jsContent = template.replace('var nodeElements = [];', `var nodeElements = ${nodesJson};`);
+        jsContent = jsContent.replace('var edgeElements = [];', `var edgeElements =${edgesJson};`);
         //jsContent = jsContent.replace('\'shape\': \'round-rectangle\',', `'shape': '${this.config.nodeShape}',`);
         //jsContent = jsContent.replace('const edgeArrowType = \'triangle\' // edge arrow to type', `const edgeArrowType = '${this.config.edgeArrowToType}' // edge arrow to type}`);
         //jsContent = jsContent.replace('ctx.strokeStyle = \'blue\'; // graph selection guideline color', `ctx.strokeStyle = '${this.config.graphSelectionGuidelineColor}'; // graph selection guideline color`);
@@ -74,74 +74,14 @@ export class CallGraphViewer {
         return text;
       }
 
-      public execute(webview: vscode.Webview): void {
+      public viewCallGraph(nodesJson: string, edgesJson: string, webview: vscode.Webview): void {
         const extensionPath = this.extensionContext.extensionPath;
         const javascriptPath = webview.asWebviewUri(vscode.Uri.file(path.join(extensionPath, 'javascript')));
         
         const outputJsFilename = CallGraphViewer._name + '.js';
         let htmlContent = this.generateHtmlContent(webview, outputJsFilename);
-        this.generateAndWriteJavascriptFile(() => {
+        this.generateAndWriteJavascriptFile(nodesJson, edgesJson, () => {
           webview.html = htmlContent;
         });
-        /*webview.html = `
-        <html>
-        <head>
-        
-        <style>
-            #cy {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-            }
-        </style>
-        
-            <title>Tutorial 1: Getting Started</title>
-            <script src='${javascriptPath}/cytoscape.min.js'></script>	
-            <script src='${javascriptPath}/klay.js'></script>
-            <script src='${javascriptPath}/cytoscape-klay.js'></script>
-        </head>
-        
-        <body>
-            <div id="cy"></div>	
-        <script>
-        var cy = cytoscape({
-          container: document.getElementById('cy'),
-          style: [{
-              selector: "node",
-              css: {
-                "label": "data(id)",
-                "text-valign": "center",
-                "text-halign": "center",
-                "background-color": "data(faveColor)"
-              }
-            },
-            {
-              selector: "edge",
-              css: {
-                "curve-style": "bezier",
-                "target-arrow-shape": "triangle"
-              }
-            }
-          ],  
-          
-          elements: [
-            { data: { id: 'a' } },
-            { data: { id: 'b' } },
-            {
-              data: {
-                id: 'ab',
-                source: 'a',
-                target: 'b'
-              }
-            }]
-        });
-        cy.layout({
-            name: 'klay'
-        }).run();
-        </script>	
-        </body>
-        </html>`;*/
       }
 }
