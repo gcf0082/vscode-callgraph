@@ -7,15 +7,22 @@ import {data4} from './mock/data';
 import fetch from 'node-fetch';
 import { exec } from "child_process";
 import * as glob from 'glob';
+import fs from 'fs';
+import {Callee} from './callgraphCalleesProvider';
 
 export function activate(context: vscode.ExtensionContext) {
-	let calleegraphViewerDisposable = vscode.commands.registerCommand(`vscode-callgraph.getCallGraphCalllees`, async () => {
-    const method = await vscode.window.showInputBox({
-      value: '',
-      placeHolder: 'input method',
-    
-    });
-    const fullMethod = method;
+  let calleegraphViewerDisposable = vscode.commands.registerCommand(`vscode-callgraph.getCallGraphCalllers`, async (node: Callee) => {
+    let fullMethod: any = '';
+    if (node != undefined) {
+      fullMethod = node.data.fullMethod
+    } else {
+      const method = await vscode.window.showInputBox({
+        value: '',
+        placeHolder: 'input method',
+
+      });
+      fullMethod = method;
+    }
     //vscode.window.showInformationMessage(`Got: ${fullMethod}`); 
     //const res = await fetch(`http://127.0.0.1:8080/caller_graph?project_name=test&method=${fullMethod}`);
    
@@ -42,13 +49,19 @@ export function activate(context: vscode.ExtensionContext) {
 	});
   context.subscriptions.push(calleegraphViewerDisposable);
 
-  let callergraphViewerDisposable = vscode.commands.registerCommand(`vscode-callgraph.getCallGraphCalllers`, async () => {
-    const method = await vscode.window.showInputBox({
-      value: '',
-      placeHolder: 'input method',
-    
-    });
-    const fullMethod = method;
+  let callergraphViewerDisposable = vscode.commands.registerCommand(`vscode-callgraph.getCallGraphCalllees`, async (node: Callee) => {
+    let fullMethod:any = '';
+    if (node != undefined) {
+      fullMethod = node.data.fullMethod      
+    } else {
+      const method = await vscode.window.showInputBox({
+        value: '',
+        placeHolder: 'input method',
+
+      });
+      fullMethod = method;
+    }
+
     //vscode.window.showInformationMessage(`Got: ${fullMethod}`); 
     //const res = await fetch(`http://127.0.0.1:8080/caller_graph?project_name=test&method=${fullMethod}`);
    
@@ -99,14 +112,32 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
     const workSpacePath = vscode.workspace.workspaceFolders[0].uri.fsPath;
-    const javaFile = data.callerClass.replaceAll('.', '/') + '.java';
+    const pos1 = data.callerClass.indexOf('$');
+    let classFile = data.callerClass;
+    if (pos1 != -1 ) {
+      classFile = data.callerClass.substring(0, pos1);
+    }
+    const javaFile = classFile.replaceAll('.', '/') + '.java';
 
     let javaPath = '';
     for (const specPath of glob.sync(`${workSpacePath}/**/${javaFile}`)) {
       javaPath = specPath;
       break;
-    }       
-    var pos = new vscode.Position(9, 4);
+    }      
+    
+    const lineNum = data.lineNum;
+    const searchLineNum = ' ' + lineNum + ' */ ';
+    const fileContent = fs.readFileSync(javaPath, 'utf-8');
+    const lines = fileContent.split(/\r?\n/);
+    let newLineNum = 0;
+    for (let i = 0; i < lines.length; ++i) {
+      if (lines[i].indexOf(searchLineNum) != -1) {
+        newLineNum = i;
+        break;
+      }
+    }
+
+    var pos = new vscode.Position(newLineNum, 1);
     var openPath = vscode.Uri.file(javaPath);
     vscode.workspace.openTextDocument(openPath).then(doc => {
       vscode.window.showTextDocument(doc).then(editor => {

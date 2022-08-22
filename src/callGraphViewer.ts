@@ -1,7 +1,8 @@
-var fs = require('fs');
 import * as vscode from 'vscode';
 import * as path from 'path'
 import { FileSystemUtils } from './filesystemUtils';
+import * as glob from 'glob';
+import fs from 'fs';
 
 
 export class CallGraphViewer {
@@ -75,6 +76,56 @@ export class CallGraphViewer {
       }
 
       public viewCallGraph(nodesJson: string, edgesJson: string, webview: vscode.Webview): void {
+
+        webview.onDidReceiveMessage(message=>{
+          switch (message.command) {
+            case 'gotoLinenumber': {
+              if (vscode.workspace.workspaceFolders == undefined) {
+                return;
+              }
+              const workSpacePath = vscode.workspace.workspaceFolders[0].uri.fsPath;
+              const pos1 = message.callerClass.indexOf('$');
+              let classFile = message.callerClass;
+              if (pos1 != -1) {
+                classFile = message.callerClass.substring(0, pos1);
+              }
+              const javaFile = classFile.replaceAll('.', '/') + '.java';
+
+              let javaPath = '';
+              for (const specPath of glob.sync(`${workSpacePath}/**/${javaFile}`)) {
+                javaPath = specPath;
+                break;
+              } 
+
+              const lineNum = message.linenum;
+              const searchLineNum = ' ' + lineNum + ' */ ';
+              const fileContent = fs.readFileSync(javaPath, 'utf-8');
+              const lines = fileContent.split(/\r?\n/);
+              let newLineNum = 0;
+              for (let i = 0; i < lines.length; ++i) {
+                if (lines[i].indexOf(searchLineNum) != -1) {
+                  newLineNum = i;
+                  break;
+                }
+              }
+
+              var pos = new vscode.Position(newLineNum, 1);
+              var openPath = vscode.Uri.file(javaPath);
+              vscode.workspace.openTextDocument(openPath).then(doc => {
+                vscode.window.showTextDocument(doc, { viewColumn: vscode.ViewColumn.Two}).then(editor => {
+                  // Line added - by having a selection at the same position twice, the cursor jumps there
+                  editor.selections = [new vscode.Selection(pos, pos)];
+
+                  // And the visible range jumps there too
+                  var range = new vscode.Range(pos, pos);
+                  editor.revealRange(range);
+                });
+              });               
+              return;
+            }
+          }
+        })
+
         const extensionPath = this.extensionContext.extensionPath;
         const javascriptPath = webview.asWebviewUri(vscode.Uri.file(path.join(extensionPath, 'javascript')));
         

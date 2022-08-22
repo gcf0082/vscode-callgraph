@@ -54,6 +54,8 @@ export class ExternalCalleeProvider implements vscode.TreeDataProvider<Callee> {
             for(const [callee, calllers] of mapCallees.entries()) {
                 var newNode = new Callee('');
                 newNode.label = callee;
+                newNode.data = {};
+                newNode.data.fullMethod = callee;
                 newNode.children = new Array(calllers.length);
                 newNode.collapsibleState = vscode.TreeItemCollapsibleState.Collapsed; 
                 for(const [callerMethod, callerAttr] of calllers.entries()) {

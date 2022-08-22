@@ -1,13 +1,15 @@
 (function () {
 
-  var nodeElements = undefined;
-  var edgeElements =undefined;
+  var nodeElements = [{"data":{"id":"G_T4LC5xlm6dNBya6FCnNA#01a","fullMethod":"java.lang.System:exit(int)","simpleMethod":"exit"}},{"data":{"id":"QN2DiDIYLJ4B7HAs-JGmyw#02a","fullMethod":"test.call_graph.implement.ChildClass1:f2()","simpleMethod":"f2"}},{"data":{"id":"QN2DiDIYLJ4B7HAs-JGmyw#02a","fullMethod":"test.call_graph.implement.ChildClass1:f2()","simpleMethod":"f2"}},{"data":{"id":"gj41mRuw9TFnFOnfE0dzqA#02d","fullMethod":"test.call_graph.implement.AbstractClass1:f2()","simpleMethod":"f2"}},{"data":{"id":"gj41mRuw9TFnFOnfE0dzqA#02d","fullMethod":"test.call_graph.implement.AbstractClass1:f2()","simpleMethod":"f2"}},{"data":{"id":"A3D4ZoAU3MFSL8KzuxKQeg#027","fullMethod":"test.call_graph.multi.TestMulti:test2()","simpleMethod":"test2"}},{"data":{"id":"A3D4ZoAU3MFSL8KzuxKQeg#027","fullMethod":"test.call_graph.multi.TestMulti:test2()","simpleMethod":"test2"}},{"data":{"id":"QN2DiDIYLJ4B7HAs-JGmyw#02agj41mRuw9TFnFOnfE0dzqA#02d","fullMethod":"test.call_graph.implement.ChildClass1:f2()","simpleMethod":"f2"}},{"data":{"id":"iJ0t7LEyGDoC3FbhVKXmPA#028","fullMethod":"test.call_graph.multi.TestMulti2:test2()","simpleMethod":"test2"}},{"data":{"id":"iJ0t7LEyGDoC3FbhVKXmPA#028","fullMethod":"test.call_graph.multi.TestMulti2:test2()","simpleMethod":"test2"}},{"data":{"id":"lgb_iAtWt9ts_wh0L5ETRg#02e","fullMethod":"test.call_graph.implement.AbstractClassL2:f2()","simpleMethod":"f2"}},{"data":{"id":"lgb_iAtWt9ts_wh0L5ETRg#02e","fullMethod":"test.call_graph.implement.AbstractClassL2:f2()","simpleMethod":"f2"}},{"data":{"id":"tAkugaYQPU_59C12SbbEWQ#029","fullMethod":"test.call_graph.implement.Interface1:f2()","simpleMethod":"f2"}},{"data":{"id":"tAkugaYQPU_59C12SbbEWQ#029","fullMethod":"test.call_graph.implement.Interface1:f2()","simpleMethod":"f2"}},{"data":{"id":"bbDjOwlO4mycgwjNlJ3ang#028","fullMethod":"test.call_graph.multi.TestMulti2:test1()","simpleMethod":"test1"}},{"data":{"id":"bbDjOwlO4mycgwjNlJ3ang#028","fullMethod":"test.call_graph.multi.TestMulti2:test1()","simpleMethod":"test1"}},{"data":{"id":"wAPk_lOnl82DYlUnfy2f3g#027","fullMethod":"test.call_graph.multi.TestMulti:test1()","simpleMethod":"test1"}},{"data":{"id":"wAPk_lOnl82DYlUnfy2f3g#027","fullMethod":"test.call_graph.multi.TestMulti:test1()","simpleMethod":"test1"}},{"data":{"id":"upw4bgBqTUV1v1ADvAEuAA#02a","fullMethod":"test.call_graph.implement.ChildClass2:f2()","simpleMethod":"f2"}},{"data":{"id":"upw4bgBqTUV1v1ADvAEuAA#02a","fullMethod":"test.call_graph.implement.ChildClass2:f2()","simpleMethod":"f2"}}];
+  var edgeElements =[{"data":{"id":"QN2DiDIYLJ4B7HAs-JGmyw#02a_G_T4LC5xlm6dNBya6FCnNA#01a","source":"QN2DiDIYLJ4B7HAs-JGmyw#02a","target":"G_T4LC5xlm6dNBya6FCnNA#01a","callerClass":"test.call_graph.implement.ChildClass1","linenum":17}},{"data":{"id":"gj41mRuw9TFnFOnfE0dzqA#02d_QN2DiDIYLJ4B7HAs-JGmyw#02a","source":"gj41mRuw9TFnFOnfE0dzqA#02d","target":"QN2DiDIYLJ4B7HAs-JGmyw#02a","callerClass":"test.call_graph.implement.AbstractClass1","linenum":0}},{"data":{"id":"A3D4ZoAU3MFSL8KzuxKQeg#027_gj41mRuw9TFnFOnfE0dzqA#02d","source":"A3D4ZoAU3MFSL8KzuxKQeg#027","target":"gj41mRuw9TFnFOnfE0dzqA#02d","callerClass":"test.call_graph.multi.TestMulti","linenum":31}},{"data":{"id":"QN2DiDIYLJ4B7HAs-JGmyw#02agj41mRuw9TFnFOnfE0dzqA#02d_gj41mRuw9TFnFOnfE0dzqA#02d","source":"QN2DiDIYLJ4B7HAs-JGmyw#02agj41mRuw9TFnFOnfE0dzqA#02d","target":"gj41mRuw9TFnFOnfE0dzqA#02d","callerClass":"test.call_graph.implement.ChildClass1","linenum":0}},{"data":{"id":"iJ0t7LEyGDoC3FbhVKXmPA#028_gj41mRuw9TFnFOnfE0dzqA#02d","source":"iJ0t7LEyGDoC3FbhVKXmPA#028","target":"gj41mRuw9TFnFOnfE0dzqA#02d","callerClass":"test.call_graph.multi.TestMulti2","linenum":31}},{"data":{"id":"lgb_iAtWt9ts_wh0L5ETRg#02e_gj41mRuw9TFnFOnfE0dzqA#02d","source":"lgb_iAtWt9ts_wh0L5ETRg#02e","target":"gj41mRuw9TFnFOnfE0dzqA#02d","callerClass":"test.call_graph.implement.AbstractClassL2","linenum":0}},{"data":{"id":"tAkugaYQPU_59C12SbbEWQ#029_gj41mRuw9TFnFOnfE0dzqA#02d","source":"tAkugaYQPU_59C12SbbEWQ#029","target":"gj41mRuw9TFnFOnfE0dzqA#02d","callerClass":"test.call_graph.implement.Interface1","linenum":0}},{"data":{"id":"bbDjOwlO4mycgwjNlJ3ang#028_tAkugaYQPU_59C12SbbEWQ#029","source":"bbDjOwlO4mycgwjNlJ3ang#028","target":"tAkugaYQPU_59C12SbbEWQ#029","callerClass":"test.call_graph.multi.TestMulti2","linenum":23}},{"data":{"id":"wAPk_lOnl82DYlUnfy2f3g#027_tAkugaYQPU_59C12SbbEWQ#029","source":"wAPk_lOnl82DYlUnfy2f3g#027","target":"tAkugaYQPU_59C12SbbEWQ#029","callerClass":"test.call_graph.multi.TestMulti","linenum":23}},{"data":{"id":"upw4bgBqTUV1v1ADvAEuAA#02a_gj41mRuw9TFnFOnfE0dzqA#02d","source":"upw4bgBqTUV1v1ADvAEuAA#02a","target":"gj41mRuw9TFnFOnfE0dzqA#02d","callerClass":"test.call_graph.implement.ChildClass2","linenum":0}}];
+  const cyPopupDiv = document.getElementById('cyPopup');
+  const vscode = acquireVsCodeApi();
   var cy = cytoscape({
     container: document.getElementById('cy'),
     style: [{
         selector: "node",
         css: {
-          "label": "data(fullMethod)",
+          "label": "data(simpleMethod)",
           "text-valign": "bottom",
           "text-halign": "center",
           "font-size":20,
@@ -98,4 +100,42 @@
       }
   }).run();
   cy.center();
+  cy.on('mouseover', 'node', function (evt) {
+    evt.cy.container().style.cursor = 'pointer';
+    doShowPopup = true;
+    setTimeout(showPopup, 500, evt);
+  });
+  cy.on('mouseout', 'node', function (evt) {
+    evt.cy.container().style.cursor = 'default';
+    hidePopup();
+  });
+
+  cy.on('click', 'edge', function (evt) {
+    console.log(evt.target.data());
+    openFileInVsCode(evt.target.data().callerClass, evt.target.data().linenum);
+  });
+
+  function showPopup(evt) {
+    if (doShowPopup) {
+      cyPopupDiv.innerHTML = evt.target.data().fullMethod;
+      const top = String(parseInt(evt.renderedPosition.y)) + 'px';
+      const left = String(parseInt(evt.renderedPosition.x)) + 'px';
+      cyPopupDiv.style.top = top;
+      cyPopupDiv.style.left = left;
+      cyPopupDiv.style.display = 'block';
+    }
+  }
+
+  function hidePopup() {
+    cyPopupDiv.style.display = 'none';
+    doShowPopup = false;
+  }  
+
+  function openFileInVsCode(callerClass, linenum) {
+    vscode.postMessage({
+      command: 'gotoLinenumber',
+      callerClass: callerClass,
+      linenum: linenum
+    });
+  }  
 }());

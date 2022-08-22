@@ -27,11 +27,12 @@
 			},
 			{
 				"command": "vscode-callgraph.getCallGraphCalllees",
-				"title": "CallGraph: Get Callees 查看向下调用链"
+				"title": "CallGraph: Get Callees 查看向下调用链"				
 			},
 			{
 				"command": "vscode-callgraph.getCallGraphCalllers",
-				"title": "CallGraph: Get Callers 查看向上调用链"
+				"title": "CallGraph: Get Callers 查看向上调用链",
+				"icon": "$(callhierarchy-incoming)"
 			},
 			{
 				"command": "vscode-callgraph.startServer",
@@ -51,7 +52,7 @@
 			],
 			"view/item/context": [
 				{
-					"command": "vscode-callgraph.getCallGraphCalllees",
+					"command": "vscode-callgraph.getCallGraphCalllers",
 					"group": "inline"
 				}
 			]

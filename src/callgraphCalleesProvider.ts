@@ -100,7 +100,7 @@ export class CallGraphCalleeProvider implements vscode.TreeDataProvider<Callee> 
         }
     }
 
-class Callee extends vscode.TreeItem {
+export class Callee extends vscode.TreeItem {
 	children: Callee[] | undefined;
 	data: any;
 

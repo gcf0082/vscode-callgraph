@@ -2,12 +2,14 @@
 
   var nodeElements = [];
   var edgeElements = [];
+  const cyPopupDiv = document.getElementById('cyPopup');
+  const vscode = acquireVsCodeApi();
   var cy = cytoscape({
     container: document.getElementById('cy'),
     style: [{
         selector: "node",
         css: {
-          "label": "data(fullMethod)",
+          "label": "data(simpleMethod)",
           "text-valign": "bottom",
           "text-halign": "center",
           "font-size":20,
@@ -98,4 +100,42 @@
       }
   }).run();
   cy.center();
+  cy.on('mouseover', 'node', function (evt) {
+    evt.cy.container().style.cursor = 'pointer';
+    doShowPopup = true;
+    setTimeout(showPopup, 500, evt);
+  });
+  cy.on('mouseout', 'node', function (evt) {
+    evt.cy.container().style.cursor = 'default';
+    hidePopup();
+  });
+
+  cy.on('click', 'edge', function (evt) {
+    console.log(evt.target.data());
+    openFileInVsCode(evt.target.data().callerClass, evt.target.data().linenum);
+  });
+
+  function showPopup(evt) {
+    if (doShowPopup) {
+      cyPopupDiv.innerHTML = evt.target.data().fullMethod;
+      const top = String(parseInt(evt.renderedPosition.y)) + 'px';
+      const left = String(parseInt(evt.renderedPosition.x)) + 'px';
+      cyPopupDiv.style.top = top;
+      cyPopupDiv.style.left = left;
+      cyPopupDiv.style.display = 'block';
+    }
+  }
+
+  function hidePopup() {
+    cyPopupDiv.style.display = 'none';
+    doShowPopup = false;
+  }  
+
+  function openFileInVsCode(callerClass, linenum) {
+    vscode.postMessage({
+      command: 'gotoLinenumber',
+      callerClass: callerClass,
+      linenum: linenum
+    });
+  }  
 }());
