@@ -23,7 +23,8 @@
 		"commands": [			
 			{
 				"command": "vscode-callgraph.getProjectExternalCallees",
-				"title": "CallGraph: Get external Callees 查看调用的所有外部函数"
+				"title": "CallGraph: Get external Callees 查看调用的所有外部函数",
+				"icon":"$(refresh)"
 			},
 			{
 				"command": "vscode-callgraph.getCallGraphCalllees",
@@ -46,7 +47,7 @@
 		"menus": {
 			"view/title": [
 				{
-					"command": "vscode-callgraph.getCallGraphCalllees",
+					"command": "vscode-callgraph.getProjectExternalCallees",
 					"group": "navigation"
 				}
 			],
@@ -83,8 +84,19 @@
 			]
 		},
 		"configuration": {
-			"title": "CallGraph",
+			"title": "codeseeker",
 			"properties": {
+				"codeseeker.dangerousFunction": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [
+						"exec",
+						"ProcessBuilder"
+					],
+					"description": "危险函数列表"
+				},
 				"dgmlViewer.defaultNodeBackgroundColor": {
 					"type": "string",
 					"default": "#D2E5FF",
