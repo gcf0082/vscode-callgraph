@@ -157,11 +157,12 @@ export function activate(context: vscode.ExtensionContext) {
   //vscode.window.registerTreeDataProvider('method-callees', new CallGraphCalleeProvider());
   vscode.window.registerTreeDataProvider('project-external-callees', externalCalleeProvider);
 
+  /* 有了分类暂时就不需要做高亮
   context.subscriptions.push(vscode.workspace.onDidChangeConfiguration((e) => {
     if (e.affectsConfiguration("codeseeker.dangerousFunction")) {
       externalCalleeProvider.refreshDangerousFunctionHighlight();
     }
-  }))
+  }))*/
 }
 
 export function deactivate() { }
