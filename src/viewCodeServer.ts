@@ -4,6 +4,7 @@ import * as url from 'url';
 
 export class  ViewCodeServer{
     private model:string = 'local_model';
+    private port = 9302;
     private extensionContext: vscode.ExtensionContext;
     constructor(context: vscode.ExtensionContext) {
         this.extensionContext = context;
@@ -16,10 +17,12 @@ export class  ViewCodeServer{
                 return;
             }   
             this.setCurrentModel(model);
-            if (this.isViewCodeModel()) {
-                this.startServer();
-            } else if (this.isDashboardModel()) {
-
+            if (this.isLocalModel()) {
+                
+            } else if (this.isViewCodeModel()) {
+                this.port = 9302;
+            } else {
+                this.port = 9303;
             }
 
         });
@@ -30,7 +33,15 @@ export class  ViewCodeServer{
     private startServer():boolean {
         const server = http.createServer((req, res)=>{
             if (req.url != undefined) {
-                var q = url.parse(req.url).query;
+                var q:any = url.parse(req.url, true).query;
+                if (req.url.indexOf('/openfile')) {
+                    const fullClass = q.fullClass;
+                    const lineNum = q.lineNum;
+
+                } else if (req.url.indexOf('/callgraph')) {
+
+                }
+                console.log(q.fullClass);
             }    
             res.writeHead(200);
             res.end('ok');
