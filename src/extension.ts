@@ -9,6 +9,7 @@ import { exec } from "child_process";
 import * as glob from 'glob';
 import fs from 'fs';
 import { Callee } from './callgraphCalleesProvider';
+import { ViewCodeServer } from './ViewCodeServer';
 
 export function activate(context: vscode.ExtensionContext) {
   let calleegraphViewerDisposable = vscode.commands.registerCommand(`vscode-callgraph.getCallGraphCalllers`, async (node: Callee) => {
@@ -163,6 +164,9 @@ export function activate(context: vscode.ExtensionContext) {
       externalCalleeProvider.refreshDangerousFunctionHighlight();
     }
   }))*/
+
+  const viewCodeServer = new ViewCodeServer(context);
+  viewCodeServer.init();
 }
 
 export function deactivate() { }

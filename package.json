@@ -42,6 +42,10 @@
 			{
 				"command": "vscode-callgraph.openfile",
 				"title": "CallGraph: open file"
+			},
+			{
+				"command": "vscode-callgraph.setViewCodeModel",
+				"title": "codeseeker: set model 设置模式"
 			}
 		],
 		"menus": {
