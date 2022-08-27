@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as http from 'http';
 import * as url from 'url';
+import { Utils } from './utils'
 
 export class  ViewCodeServer{
     private model:string = 'local_model';
@@ -16,13 +17,15 @@ export class  ViewCodeServer{
             if (model == undefined) {
                 return;
             }   
-            this.setCurrentModel(model);
-            if (this.isLocalModel()) {
+            Utils.setModel(model);
+            if (Utils.isLocalModel()) {
                 
-            } else if (this.isViewCodeModel()) {
+            } else if (Utils.isViewCodeModel()) {
                 this.port = 9302;
+                this.startServer();
             } else {
                 this.port = 9303;
+                this.startServer();
             }
 
         });
@@ -34,11 +37,10 @@ export class  ViewCodeServer{
         const server = http.createServer((req, res)=>{
             if (req.url != undefined) {
                 var q:any = url.parse(req.url, true).query;
-                if (req.url.indexOf('/openfile')) {
-                    const fullClass = q.fullClass;
-                    const lineNum = q.lineNum;
+                if (req.url.indexOf('/openfile') == 0) {
+                    vscode.commands.executeCommand('vscode-callgraph.openfile', { callerClass: q.fullClass, lineNum: q.linenum });
 
-                } else if (req.url.indexOf('/callgraph')) {
+                } else if (req.url.indexOf('/callgraph') == 0) {
 
                 }
                 console.log(q.fullClass);
@@ -46,35 +48,7 @@ export class  ViewCodeServer{
             res.writeHead(200);
             res.end('ok');
         });
-        server.listen(9302);
+        server.listen(this.port);
         return true;
-    }
-
-    private setCurrentModel(model:string) {
-        this.model = model;
-    }
-
-    private isViewCodeModel():boolean {
-        if (this.model.indexOf('view_code_model') != -1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private isLocalModel(): boolean {
-        if (this.model.indexOf('local_model') != -1) {
-            return true;
-        } else {
-            return false;
-        }
-    }   
-    
-    private isDashboardModel(): boolean {
-        if (this.model.indexOf('dashboard_model') != -1) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }

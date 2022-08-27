@@ -10,6 +10,7 @@ import * as glob from 'glob';
 import fs from 'fs';
 import { Callee } from './callgraphCalleesProvider';
 import { ViewCodeServer } from './ViewCodeServer';
+import { Utils } from './utils';
 
 export function activate(context: vscode.ExtensionContext) {
   let calleegraphViewerDisposable = vscode.commands.registerCommand(`vscode-callgraph.getCallGraphCalllers`, async (node: Callee) => {
@@ -109,6 +110,14 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(startServerDisposable);
 
   let openFileDisposable = vscode.commands.registerCommand(`vscode-callgraph.openfile`, async (data) => {
+   
+    if (Utils.isDashboardModel()) {
+      fetch(`http://127.0.0.1:9302/openfile?fullClass=${data.callerClass}&linenum=${data.lineNum}`, { method: 'GET' }
+      ).then(res => res.json()).then(
+      );
+      return;
+    }
+
     if (vscode.workspace.workspaceFolders == undefined) {
       return;
     }
